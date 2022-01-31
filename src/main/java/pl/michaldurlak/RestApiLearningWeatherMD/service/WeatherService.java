@@ -3,19 +3,22 @@ package pl.michaldurlak.RestApiLearningWeatherMD.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import pl.michaldurlak.RestApiLearningWeatherMD.controller.ReadSecrets;
 import pl.michaldurlak.RestApiLearningWeatherMD.model.WeatherDto;
-
-import java.net.http.HttpClient;
 
 @Service
 @Slf4j
 public class WeatherService {
 
     private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/";
-    private static final String API = "PRIVATE";
+
+//    @Autowired
+//    private pl.michaldurlak.RestApiLearningWeatherMD.ReadSecrets ReadSecrets;
+
+    private static final String API = ReadSecrets.getProperty("API_KEY");
 
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
 
 

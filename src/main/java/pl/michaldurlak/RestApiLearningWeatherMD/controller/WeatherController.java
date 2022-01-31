@@ -1,6 +1,7 @@
 package pl.michaldurlak.RestApiLearningWeatherMD.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,19 +11,25 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.michaldurlak.RestApiLearningWeatherMD.model.WeatherDto;
 import pl.michaldurlak.RestApiLearningWeatherMD.service.WeatherService;
 
+
+import java.io.IOException;
+import java.util.Properties;
+
 //@RestController
 @RequiredArgsConstructor
 @Controller
 public class WeatherController {
 
-    private  final WeatherService weatherService;
+       private  final WeatherService weatherService;
 
 
 
-//    @GetMapping(value = "/pogoda")
-//    public WeatherDto getWeather(@RequestParam String city){
-//        return weatherService.getWeather(city);
-//    }
+    @GetMapping(value = "/pogoda")
+    public WeatherDto getWeather(@RequestParam String city){
+
+        return weatherService.getWeather(city);
+
+    }
 
     @GetMapping("/weather")
     String weather (@RequestParam(name="city", required=false, defaultValue="Warszawa") String city, Model model){
@@ -31,5 +38,7 @@ public class WeatherController {
         model.addAttribute("infoWeatherSpecifyCity", infoWeatherSpecifyCity);
         return "weather";
     }
+
+
 
 }
