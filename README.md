@@ -2,7 +2,8 @@
 
 How to use the program:
 1. Clone the repo
-2. Modify WeatherService -> value API (https://openweathermap.org/api)
+2. Add file apikey.properties into folder "RestApiLearningWeatherMD/src/main/resources/" -> API_KEY = YOURKEY  
+You can download your own API key using this site: https://openweathermap.org/api
 3. Start program (I'm using IntelliJ IDEA Community Edition)
 4. Open browser (I'm using Google Chrome)
 
